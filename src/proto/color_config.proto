@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+enum Distribution {
+  DISTRIBUTION_UNSPECIFIED = 0;
+  DISTRIBUTION_EQUAL = 1;
+  DISTRIBUTION_NEAR = 2;
+}
+
+message Color {
+  int32 index = 1;
+  float hue = 2;
+  float saturation = 3;
+}
+
+message ColorConfig {
+  int32 hue_count = 1;            // 8 bits (256)
+  int32 proximity = 2;            // 7 bits (128)
+  float hue_offset = 3;           // 12 bits (4096)
+  float saturation = 4;           // 8 bits (256)
+  int32 scale_min = 5;            // 7 bits (128)
+  int32 scale_max = 6;            // 7 bits (128)
+  int32 scale_step = 7;           // 6 bits (32)
+  Distribution distribution = 9;  // 1 bit
+  repeated Color colors = 10;
+}

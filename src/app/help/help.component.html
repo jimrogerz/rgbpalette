@@ -1,0 +1,44 @@
+<div class="m-4 w-full overflow-auto text-center">
+  <div class="inline-block w-[75%] rounded-lg px-8 pb-8 shadow bg-white dark:bg-slate-900">
+    <div class="text-xl my-8 uppercase text-slate-900 dark:text-slate-100">Using the table</div>
+    <div class="text-slate-700 text-left dark:text-slate-300">
+      <p>Each row contains a swatch for a particular color at various lightness levels. We compute the lightness on a scale of 0 (black) to 100 (white). Note this is perceived lightness, which takes into account irregularities in vision for different hues. This allows you to change one variable at a time (hue or lightness) when changing colors.</p>
+      <p class="mt-4">Click a color in the table to copy the hex color code to your clipboard. The table displays raw text as well so you can manually copy them (CTRL/CMD-C). Do this when you need an entire switch or the entire table.</p>
+    </div>
+  </div>
+  <div class="mt-4 inline-block w-[75%] rounded-lg px-8 pb-8 shadow bg-white dark:bg-slate-900">
+    <div class="text-xl text-slate-900 my-8 uppercase dark:text-slate-100">Configuring the table</div>
+    <div class="text-slate-700 text-left dark:text-slate-300">
+      <p>Toggle the <span class="italic">show configuration</span> switch if it is not already on. Then you can make adjustments using the sliders or by dragging the hue markers on the color wheel. Each marker represents the hue and saturation of a swatch. The edge of the wheel is fully saturated and the center of the wheel is fully unsaturated (white). The sliders have the following effects:</p>
+      <div class="flex mt-4">
+        <div class="flex-none mr-4 uppercase font-bold text-slate-900 dark:text-slate-100">count:</div>
+        <div class="flex-1">The number of hues or swatches to include in the palette.</div>
+      </div>
+      <div class="flex mt-4">
+        <div class="flex-none mr-4 uppercase font-bold text-slate-900 dark:text-slate-100">distribution:</div>
+        <div class="flex-1">Distributes hues evenly around the wheel or near a specific hue set by the offset. This control is disabled if count is set to 1.</div>
+      </div>
+      <div class="flex mt-4">
+        <div class="flex-none mr-4 uppercase font-bold text-slate-900 dark:text-slate-100">offset:</div>
+        <div class="flex-1">A hue offset that applies to all swatches.</div>
+      </div>
+      <div class="flex mt-4">
+        <div class="flex-none mr-4 uppercase font-bold text-slate-900 dark:text-slate-100">saturation:</div>
+        <div class="flex-1">Color saturation level that applies to all swatches.</div>
+      </div>
+      <div class="flex mt-4">
+        <div class="flex-none mr-4 uppercase font-bold text-slate-900 dark:text-slate-100">range/step:</div>
+        <div class="flex-1">The upper and lower bounds of lightness and spacing between steps.</div>
+      </div>
+    </div>
+  </div>
+  <div class="mt-4 inline-block w-[75%] rounded-lg px-8 pb-8 shadow bg-white dark:bg-slate-900">
+    <div class="text-xl my-8 uppercase text-slate-900 dark:text-slate-100">Special features</div>
+    <div class="text-slate-700 text-left dark:text-slate-300">
+      <p>Try going to <a style="color: #d04848" href="/red">rgbtable.com/red</a>, <a style="color: #9751e9" href="/purple">rgbtable.com/purple</a>, or <a style="color: #c88000" href="/#ffA500">rgbtable.com/#ffA500</a>, etc. We'll take the color and build a swatch out of it!</p>
+      <p class="mt-4">Once you have created a palette, save a link to it with the <mat-icon color="primary">link</mat-icon> button.</p>
+      <p class="mt-4">Toggle the complementary switch at the top of the palette to show complementary colors. These are colors on the opposite side of the color wheel that match well.</p>
+      <p class="mt-4">Turn on the <span class="italic">alt shades</span> switch to show shades in terms of darkness ranging from 0 (white) to 1000 (black).</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,76 @@
+<div class="m-4 w-full overflow-auto text-center">
+  <div *ngIf="showConfiguration" class="inline-block w-[75%] min-w-max mb-4 relative gap-6 rounded-lg p-8 shadow bg-white dark:bg-slate-900">
+    <div class="flex max-h-sm">
+      <div class="text-left text-sm w-[50%]">
+        <div>
+          count
+          <button mat-button class="float-right" [style.visibility]="hueCount===defaultHueCount?'hidden':'visible'" aria-label="reset" (click)="hueCount=defaultHueCount;onHueChanged()">reset</button>
+          <mat-slider min="1" [max]="distribution===1?32:8" discrete>
+            <input matSliderThumb [(ngModel)]="hueCount" (ngModelChange)="onHueChanged()">
+          </mat-slider>
+        </div>
+        <div>
+          distribution
+          <button mat-button class="float-right" [style.visibility]="distribution!==defaultDistribution?'visible':'hidden'" aria-label="reset" (click)="distribution=defaultDistribution">reset</button>
+          <mat-radio-group [disabled]="hueCount===1" class="mr-4" name="distribution" color="primary" [(ngModel)]="distribution" (ngModelChange)="onDistributionChanged()">
+            <p>
+              <mat-radio-button [value]="1" checked="true">evenly around wheel</mat-radio-button>
+            </p>
+            <mat-radio-button [value]="2">near hue</mat-radio-button>
+          </mat-radio-group>
+          <mat-slider [disabled]="distribution===1||hueCount===1" min="5" max="60" discrete>
+            <input matSliderThumb [(ngModel)]="proximity" (ngModelChange)="onHueOffsetChanged()">
+          </mat-slider>
+        </div>
+        <div>
+          offset
+          <button mat-button class="float-right" [style.visibility]="hueOffsetDirty?'visible':'hidden'" aria-label="reset" (click)="resetOffset()">reset</button>
+          <mat-slider [max]="offsetMaxSize">
+            <input matSliderThumb [(ngModel)]="hueOffset" (ngModelChange)="onHueOffsetChanged()" />
+          </mat-slider>
+        </div>
+        <div>
+          saturation
+          <button mat-button class="float-right" [style.visibility]="saturationChanged?'visible':'hidden'" aria-label="reset" (click)="resetSaturation()">reset</button>
+          <!--
+              <div class="flex-none">
+                <mat-checkbox color="primary" matTooltip="Disable additive brightness after the color clips" [(ngModel)]="constantSaturation" (ngModelChange)="onConstantSaturationChanged()">Constant</mat-checkbox>
+              </div>
+            -->
+          <mat-slider [max]="saturationMaxSize">
+            <input matSliderThumb [(ngModel)]="saturation" (ngModelChange)="onSaturationChanged()" />
+          </mat-slider>
+        </div>
+        <div>
+          range
+          <button mat-button class="float-right" [style.visibility]="lightnessDirty?'visible':'hidden'" aria-label="reset" (click)="resetLightness()">reset</button>
+          <mat-slider class="w-full" max="100" step="5" discrete>
+            <input matSliderStartThumb [(ngModel)]="lightnessMin" (ngModelChange)="onLightnessChanged()">
+            <input matSliderEndThumb [(ngModel)]="lightnessMax" (ngModelChange)="onLightnessChanged()">
+          </mat-slider>
+        </div>
+        <div>
+          step
+          <button mat-button class="float-right" [style.visibility]="lightnessStepDirty?'visible':'hidden'" aria-label="reset" (click)="resetLightnessStep()">reset</button>
+          <mat-slider min="5" max="25" step="5" discrete>
+            <input matSliderThumb [(ngModel)]="lightnessStep" (ngModelChange)="onLightnessStepChanged()" />
+          </mat-slider>
+        </div>
+      </div>
+      <div #colorWheelDiv class="aspect-square flex-1 max-w-md overflow-hidden relative p-8" (resized)="onColorWheelResized($event)" (mousemove)="onMarkerDragged($event)" (mouseleave)="onMarkerDragStop()" (mouseup)="onMarkerDragStop()">
+        <canvas #colorWheel>
+          Your browser doesn't appear to support the <code>&lt;canvas&gt;</code> element.
+        </canvas>
+        <div *ngFor="let hue of swatches;let index=index" class="absolute w-4 h-4 rounded-full drop-shadow-[0_3px_3px_rgba(0,0,0,0.5)]" [style.transformOrigin]="hue.marker.transformOrigin" [style.transform]="hue.marker.transform" [style.backgroundColor]="hue.marker.color" (mousedown)="onMarkerDragStart($event)" (mouseup)="onMarkerDragStop()">
+          <span class="invisible">{{index}}</span>
+        </div>
+        <div #dragTips class="text-xs font-medium text-xs text-slate-500" [style.visibility]="markerDragIndex===-1?'hidden':'visible'">
+          <span>SHIFT: color only</span><span class="float-right">ALT: saturation only</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="inline-block min-w-[75%] rounded-lg px-8 pb-8 shadow bg-white dark:bg-slate-900">
+    <aa-palette [palette]="palette"></aa-palette>
+  </div>
+</div>

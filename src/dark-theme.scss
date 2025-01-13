@@ -1,0 +1,66 @@
+@use '@angular/material' as mat;
+
+$rgbtable-dark-primary: (
+ 900: #eff6ff,
+ 800: #dbeafe,
+ 700: #bfdbfe,
+ 600: #93c5fd,
+ 500: #60a5fa,
+ 400: #3b82f6,
+ 300: #2563eb,
+ 200: #1d4ed8,
+ 100: #1e40af,
+ 50: #1e3a8a,
+ contrast: (
+   50: rgba(black, 0.87),
+   100: rgba(black, 0.87),
+   200: rgba(black, 0.87),
+   300: white,
+   400: white,
+   500: white,
+   600: white,
+   700: white,
+   800: white,
+   900: white,
+ )
+);
+
+$rgbtable-dark-accent: (
+ 900: #fefce8,
+ 800: #fef9c3,
+ 700: #fef08a,
+ 600: #fde047,
+ 500: #facc15,
+ 400: #eab308,
+ 300: #ca8a04,
+ 200: #a16207,
+ 100: #854d0e,
+ 50: #713f12,
+ contrast: (
+   50: rgba(black, 0.87),
+   100: rgba(black, 0.87),
+   200: rgba(black, 0.87),
+   300: white,
+   400: white,
+   500: white,
+   600: white,
+   700: white,
+   800: white,
+   900: white,
+ )
+);
+
+$dark-primary: mat.m2-define-palette($rgbtable-dark-primary, 500);
+$dark-accent: mat.m2-define-palette($rgbtable-dark-accent, 500);
+$dark-theme: mat.m2-define-dark-theme((
+  color: (
+    primary: $dark-primary,
+    accent: $dark-accent,
+  )
+));
+
+@mixin dark-theme {
+  color: white;
+  @include mat.core();
+  @include mat.all-component-colors($dark-theme);
+}

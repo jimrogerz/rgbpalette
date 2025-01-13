@@ -1,0 +1,35 @@
+<div class="mb-8 pt-4">
+  <button *ngIf="palette" matTooltip="Copy link to palette" class="float-right" mat-icon-button color="primary" (click)="palette.copyLink()" aria-label="Copy link to palette">
+    <mat-icon class="mb-2">link</mat-icon>
+  </button>
+  <div class="flex h-8 justify-center">
+    <mat-slide-toggle *ngIf="palette" color="primary" class="mr-4" [(ngModel)]="palette.showConfiguration" (click)="toggleConfiguration()"><span class="font-mono text-slate-500 text-xs whitespace-nowrap">show configuration</span></mat-slide-toggle>
+    <mat-slide-toggle color="primary" class="mr-4" [(ngModel)]="complement"><span class="font-mono text-slate-500 text-xs whitespace-nowrap">complement</span></mat-slide-toggle>
+    <mat-slide-toggle color="primary" [(ngModel)]="shadeMode" (click)="storeShadeMode()"><span class="font-mono text-slate-500 text-xs whitespace-nowrap">alt shades</span></mat-slide-toggle>
+  </div>
+</div>
+<div class="text-slate-500 w-full font-mono text-sm">{{header}}</div>
+<table *ngIf="palette" class="table-auto w-full bg-white dark:bg-slate-900">
+  <thead *ngIf="palette.swatches.length > 0" class="w-full">
+    <tr *ngIf="shadeMode; else lightMode">
+      <th *ngFor="let color of colors(0)" class="overflow-hidden">
+        <div class="w-6 font-medium text-xs text-slate-900 dark:text-slate-100">{{1000 - color.shade * 10}}</div>
+      </th>
+    </tr>
+    <ng-template #lightMode>
+      <tr>
+        <th *ngFor="let color of colors(0)" class="overflow-hidden">
+          <div class="w-6 font-medium text-xs text-slate-900 dark:text-slate-100">{{color.shade}}</div>
+        </th>
+      </tr>
+    </ng-template>
+  </thead>
+  <tbody class="w-full text-slate-500 font-mono text-xs">
+    <tr *ngFor="let swatch of palette.swatches; let i = index">
+      <td *ngFor="let color of colors(i)" class="text-center">
+        <button mat-flat-button class="h-10 rounded shadow cursor-pointer text-center w-full" [style.backgroundColor]="getColor(color)" [style.minWidth]="'unset'" (click)="onSelectColor(color)"></button>
+        <div>{{getColor(color)}}</div>
+      </td>
+    </tr>
+  </tbody>
+</table>

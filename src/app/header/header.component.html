@@ -1,0 +1,36 @@
+<nav class="m-0 p-0 w-full bg-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.25)] dark:bg-slate-900 dark:drop-shadow-[0_4px_4px_rgba(0,0,0,1)]">
+  <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+    <div class="relative flex h-16 items-center justify-between text-center">
+      <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon color="primary" class="mb-2 material-icons-outlined">menu</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <div *ngFor="let menuItem of menuItems" class="text-left">
+            <button mat-menu-item [routerLink]="menuItem.routerLink" class="mx-4">{{menuItem.name}}</button>
+          </div>
+        </mat-menu>
+      </div>
+      <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
+        <div>
+          <div class="flex flex-shrink-0 items-center">
+            <img class="block h-8 w-auto lg:hidden" src="assets/rgb.svg" alt="rgbtable.com">
+            <img class="hidden h-8 w-auto lg:block" src="assets/rgb.svg" alt="rgbtable.com">
+            <div class="text-slate-700 dark:text-slate-300 font-mono ml-2 text-2xl">rgbtable.com</div>
+          </div>
+          <div class="text-slate-500 block text-xs text-center">A palette for digital artists</div>
+        </div>
+        <div class="hidden sm:ml-8 sm:block">
+          <div class="flex space-x-2">
+            <button *ngFor="let menuItem of menuItems" [routerLink]="menuItem.routerLink" [matTooltip]="menuItem.tooltip" mat-icon-button>
+              <mat-icon color="primary" [style.color]="menuItem.color" class="mb-2 material-icons-outlined">{{menuItem.icon}}</mat-icon>
+            </button>
+          </div>
+        </div>
+      </div>
+      <mat-slide-toggle color="primary" [(ngModel)]="darkMode" [matTooltip]="darkMode?'Disable dark mode':'Enable dark mode'" (change)="setDarkMode()">
+        <mat-icon color="primary">dark_mode</mat-icon>
+      </mat-slide-toggle>
+    </div>
+  </div>
+</nav>
