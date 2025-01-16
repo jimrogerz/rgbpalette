@@ -1,0 +1,10 @@
+# robots.txt file for rgbtable.com
+
+User-agent: *
+Disallow: /
+
+User-agent: *
+Allow: /
+Allow: /about
+Allow: /help
+
