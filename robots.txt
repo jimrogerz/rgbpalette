@@ -1,4 +1,4 @@
-# robots.txt file for rgbtable.com
+# robots.txt file for rgbpalette.com
 
 User-agent: *
 Disallow: /
