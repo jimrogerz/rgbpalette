@@ -422,7 +422,7 @@ export class CreateComponent {
     }
     colorConfig.colors = colors;
 
-    return "https://rgbtable.com/" + ColorLoader.serializeConfig(colorConfig);
+    return "https://rgbpalette.com/" + ColorLoader.serializeConfig(colorConfig);
   }
 
   updatePalette() {

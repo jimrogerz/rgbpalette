@@ -9,7 +9,7 @@ import { filter } from 'rxjs';
     standalone: false
 })
 export class AppComponent implements OnInit {
-  title = 'rgbtable';
+  title = 'rgbpalette';
 
   constructor(private router: Router,
               private configService: ConfigService,

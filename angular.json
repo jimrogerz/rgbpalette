@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "rgbtable": {
+    "rgbpalette": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-builders/custom-webpack:browser",
           "options": {
-            "outputPath": "dist/rgbtable",
+            "outputPath": "dist/rgbpalette",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -75,10 +75,10 @@
           "builder": "@angular-builders/custom-webpack:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "rgbtable:build:production"
+              "buildTarget": "rgbpalette:build:production"
             },
             "development": {
-              "buildTarget": "rgbtable:build:development"
+              "buildTarget": "rgbpalette:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -86,7 +86,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "rgbtable:build"
+            "buildTarget": "rgbpalette:build"
           }
         },
         "test": {

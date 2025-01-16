@@ -1,5 +1,5 @@
 {
-  "name": "rgbtable",
+  "name": "rgbpalette",
   "version": "1.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "ng build && gh-pages -d dist/rgbtable"
+    "deploy": "ng build && gh-pages -d dist/rgbpalette"
   },
   "private": true,
   "dependencies": {
